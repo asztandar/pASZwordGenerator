@@ -7,5 +7,7 @@ const Header = ({ children, className }: IHeaderProps) => {
     </header>
   )  
 };
-
+Header.defaultProps = {
+    className: ""
+};
 export default Header;
