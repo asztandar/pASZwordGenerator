@@ -1,14 +1,20 @@
 #root {
-  max-width: 1280px;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .pageWrapper{
-  width: 100vw;
-  height: 100vh;
+  --padding_w: 50px;
+  --padding_h: 30px;
+  padding: var(--padding_h) var(--padding_w);
+  width: calc(100% - var(--padding_w) - var(--padding_w));/* 100vw - 2*paddingBoczny  */
+  height: calc(100% - var(--padding_h) - var(--padding_h));/* 100vh - 2*paddingGoraDol  */
   background-color: aqua;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
 }
