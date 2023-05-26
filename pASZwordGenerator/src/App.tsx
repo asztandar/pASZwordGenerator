@@ -9,22 +9,24 @@ function App() {
 
   return (
     <div className='pageWrapper'>
-      <Header className="">
-        <Box id="logoBox">
-          <Typography>Miejsce na logo</Typography>
-        </Box>
-      </Header>
-      <Main>
-        <Box id="mainBox">
-          <Typography>Miejsce na kontent</Typography>
-        </Box>
-      </Main>
-      <Footer>
-        <Box id="footerBox">
-          <Typography>Miejsce na stopkę</Typography>
-        </Box>
-      </Footer>
-
+      <Box className="containerBox">
+        <Header>
+          <Box id="logoBox">
+            
+            <Typography>Miejsce na logo</Typography>
+          </Box>
+        </Header>
+        <Main>
+          <Box id="mainBox">
+            <Typography>Miejsce na kontent</Typography>
+          </Box>
+        </Main>
+        <Footer>
+          <Box id="footerBox">
+            <Typography>Miejsce na stopkę</Typography>
+          </Box>
+        </Footer>
+      </Box>
     </div>
   )
 }
