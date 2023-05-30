@@ -14,7 +14,7 @@ function App() {
         <Header>
           <Box id="logoBox">
             <Image imgSRC={logoImg} className="img"/>
-            <Typography className='fs'>P<span className=''>A</span><span>SZ</span>WORD GENERATOR</Typography>
+            <Typography id='logoBoxTypography'>P<span className='spanBlack'>A</span><span className='spanRed'>SZ</span>WORD GENERATOR</Typography>
           </Box>
         </Header>
         <Main>
