@@ -61,8 +61,8 @@
   height: 100px;
 }
 
-.spanBlack{
-  color: #000;
+.spanBlue{
+  color: rgb(25, 102, 217);
 }
 
 .spanRed{
@@ -71,4 +71,41 @@
 
 #logoBoxTypography{
   font-size: 32px;
+}
+
+#footerBox{
+  display: flex;
+  /* background-color: black; */
+  justify-content: center;
+  align-items: center;
+}
+
+#mainBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.boxInput{
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#boxInputButton{
+  height: 100%;
+}
+
+.boxSettings{
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#boxSettingsButton{
+  width: 101px;
 }

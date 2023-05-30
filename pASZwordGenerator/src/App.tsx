@@ -6,6 +6,10 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import logoImg from './assets/logo.png';
 import Image from './components/Image';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SettingsIcon from '@mui/icons-material/Settings';
 function App() {
 
   return (
@@ -14,17 +18,24 @@ function App() {
         <Header>
           <Box id="logoBox">
             <Image imgSRC={logoImg} className="img"/>
-            <Typography id='logoBoxTypography'>P<span className='spanBlack'>A</span><span className='spanRed'>SZ</span>WORD GENERATOR</Typography>
+            <Typography id='logoBoxTypography'>P<span className='spanBlue'>A</span><span className='spanRed'>SZ</span>WORD GENERATOR</Typography>
           </Box>
         </Header>
         <Main>
           <Box id="mainBox">
-            <Typography>Miejsce na kontent</Typography>
+            <Box className="boxInput">
+              <TextField sx={{'& .MuiOutlinedInput-root':{height: '100%'}}} id="boxInputTextField" placeholder='wygenerowane hasło'/>
+              <Button id="boxInputButton" variant="contained">Generuj</Button>
+            </Box>
+            <Box className="boxSettings">
+              <TextField sx={{'& .MuiOutlinedInput-root':{height: '100%', visibility: 'hidden'}}} id="boxSettingsTextField" />
+              <Button id="boxSettingsButton" variant="contained"><SettingsIcon/></Button>
+            </Box>
           </Box>
         </Main>
         <Footer>
           <Box id="footerBox">
-            <Typography>Miejsce na stopkę</Typography>
+            <Link href="http://aszapp.ct8.pl/" underline="hover">ASZAPP</Link>
           </Box>
         </Footer>
       </Box>
