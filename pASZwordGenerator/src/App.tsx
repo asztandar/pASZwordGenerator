@@ -4,7 +4,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Main from './components/Main';
 import Footer from './components/Footer';
-
+import logoImg from './assets/logo.png';
+import Image from './components/Image';
 function App() {
 
   return (
@@ -12,8 +13,8 @@ function App() {
       <Box className="containerBox">
         <Header>
           <Box id="logoBox">
-            
-            <Typography>Miejsce na logo</Typography>
+            <Image imgSRC={logoImg} className="img"/>
+            <Typography className='fs'>P<span className=''>A</span><span>SZ</span>WORD GENERATOR</Typography>
           </Box>
         </Header>
         <Main>
