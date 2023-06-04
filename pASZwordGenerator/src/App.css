@@ -109,3 +109,16 @@
 #boxSettingsButton{
   width: 101px;
 }
+
+.modalSettingsDialogTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalSettingsDialogContent{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column; 
+}

@@ -1,4 +1,4 @@
-const GeneratePassword = (settings: any) =>{
+const GeneratePassword = (settings: object) =>{
     let password = "";
     
     return password;
