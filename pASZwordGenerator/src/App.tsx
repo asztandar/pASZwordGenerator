@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
@@ -12,13 +13,13 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ModalSettings from './modals/modalSettings';
-import MyContext from './utils/Context';
+import SettingsContext, { defaultContext } from './utils/Context';
 import IContext from './interfaces/IContext';
 
 function App() {
   
-
-  const [state, setState] = useState();
+  const [settings, setSettings] = useState<IContext | any>(defaultContext)
+  
 
   const [openModalSettings, setOpenModalSettings] = useState<boolean>(false);
 
@@ -27,7 +28,7 @@ function App() {
   };
 
   return (
-    <MyContext.Provider value={{state, setState}}>
+    <SettingsContext.Provider value={{settings, setSettings}}>
       <div className="pageWrapper">
         <Box className="containerBox">
           <Header>
@@ -81,7 +82,7 @@ function App() {
         </Box>
         <ModalSettings open={openModalSettings} close={setOpenModalSettings} />
       </div>
-    </MyContext.Provider>
+     </SettingsContext.Provider>
   );
 }
 

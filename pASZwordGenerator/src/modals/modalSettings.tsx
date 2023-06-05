@@ -8,18 +8,44 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Slider from '@mui/material/Slider';
 import Box from '@mui/material/Box';
-import { TextField, Typography } from '@mui/material';
+import { TextField } from '@mui/material';
+import * as React from 'react';
+import SettingsContext from './../utils/Context';
 
 const ModalSettings = ({open, close}: IModalSettings) => {
+
+  const context = React.useContext(SettingsContext);
+
+  console.log("settings1: ", context);
+
+  React.useEffect(() => {
+    console.log("settings: ", context);
+    context.setSettings((prevSettings: any) => ({
+      ...prevSettings,
+      settings: {
+        ...prevSettings.settings,
+        length: 99
+      }
+    }));
+    context.setSettings((prevSettings: any) => ({
+      ...prevSettings,
+      settings: {
+        ...prevSettings.settings,
+        digit: false
+      }
+    }));
+  }, []);
+  console.log("settings: ", context);
+
 
   return (
       <Dialog open={open} onClose={()=>close(false)} PaperProps={{className:'modalSettingsDialog'}}>
         <DialogTitle className='modalSettingsDialogTitle'>Ustawienia</DialogTitle>
         <DialogContent className='modalSettingsDialogContent'>
-            <FormControlLabel control={<Checkbox />} label="Wielkie litery" />
-            <FormControlLabel control={<Checkbox />} label="Małe litery" />
-            <FormControlLabel control={<Checkbox />} label="Cyfry" />
-            <FormControlLabel control={<Checkbox />} label="Znaki specjalne" />
+            <FormControlLabel control={<Checkbox  checked={context.settings.settings.upperCase}/>} label="Wielkie litery" />
+            <FormControlLabel control={<Checkbox checked={context.settings.lowerCase}/>} label="Małe litery" />
+            <FormControlLabel control={<Checkbox checked={context.settings.digit}/>} label="Cyfry" />
+            <FormControlLabel control={<Checkbox checked={context.settings.special}/>} label="Znaki specjalne" />
             <Box>
                 <Slider defaultValue={8} min={4} max={32}  aria-label="Default" valueLabelDisplay="auto" />
                 <TextField label="Długość" value={null}/>

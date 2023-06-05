@@ -1,23 +1,19 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { createContext} from 'react';
+import * as React from 'react';
 import IContext from '../interfaces/IContext';
 
-const appCtxDefaultValue = {
-    state: {
-      settings: {
-        length: 0,
-        upperCase: true,
-        lowerCase: true,
-        digits: true,
-        specialSigns: true,
-      },
-      darkmode: false
-    },
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    setState: (state: IContext)=> {}
-  };
+export const defaultContext = {
+  settings: {
+    length: 8,
+    upperCase: true,
+    lowerCase: true,
+    digit: true,
+    special: true,
+    darkmode: true
+  },
+  setSettings: () => {}
+};
 
-const MyContext = createContext(appCtxDefaultValue);
-  
+const SettingsContext = React.createContext<IContext>(defaultContext);
 
-export default MyContext;
+export default SettingsContext;
