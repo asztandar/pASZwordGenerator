@@ -13,13 +13,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ModalSettings from './modals/modalSettings';
-import SettingsContext, { defaultContext } from './utils/Context';
-import IContext from './interfaces/IContext';
+import { SettingsProvider } from './utils/Context';
 
 function App() {
-  
-  const [settings, setSettings] = useState<IContext | any>(defaultContext)
-  
 
   const [openModalSettings, setOpenModalSettings] = useState<boolean>(false);
 
@@ -28,7 +24,7 @@ function App() {
   };
 
   return (
-    <SettingsContext.Provider value={{settings, setSettings}}>
+    <SettingsProvider>
       <div className="pageWrapper">
         <Box className="containerBox">
           <Header>
@@ -82,7 +78,7 @@ function App() {
         </Box>
         <ModalSettings open={openModalSettings} close={setOpenModalSettings} />
       </div>
-     </SettingsContext.Provider>
+    </SettingsProvider>
   );
 }
 
