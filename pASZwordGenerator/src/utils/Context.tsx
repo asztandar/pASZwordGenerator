@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 // settingsContext.tsx
-import { createContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useState, ReactNode } from 'react';
 
 export type Settings = {
   length: number;
@@ -9,6 +9,7 @@ export type Settings = {
   digit: boolean;
   darkmode: boolean;
   password: string;
+  special: boolean;
 };
 
 type SettingsContextValue = {
@@ -22,7 +23,8 @@ const defaultSettings: Settings = {
   upperCase: true,
   digit: true,
   darkmode: false,
-  password: ""
+  password: "",
+  special: true
 };
 
 export const SettingsContext = createContext<SettingsContextValue>({
@@ -37,10 +39,6 @@ type SettingsProviderProps = {
 export const SettingsProvider = ({ children }: SettingsProviderProps) => {
   const [settings, setSettings] = useState<Settings>(defaultSettings);
 
-  useEffect(() => {
-    // Wywołaj funkcję lub wykonaj jakieś operacje po zmianie stanu "settings"
-    console.log('Zaktualizowano settings:', settings);
-  }, [settings]);
 
   const updateSettings = (updatedSettings: Partial<Settings>) => {
     setSettings((prevSettings) => ({

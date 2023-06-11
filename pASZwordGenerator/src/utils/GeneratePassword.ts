@@ -1,10 +1,11 @@
+import { Settings } from "./Context";
 
 const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
 const specialChars = "!@#$%^&*()_+~`|}{[]\\:;?></-=";
 const numberChars = "0123456789";
 
-const createPassword = (settings: any): string => {
+const createPassword = (settings: Settings): string => {
   let allChars = "";
   if (settings.digit) {
     allChars += numberChars;
@@ -18,7 +19,6 @@ const createPassword = (settings: any): string => {
   if (settings.special) {
     allChars += specialChars;
   }
-  console.log("allChars:", allChars);
   const allCharsLength = allChars.length;
   const password: string[] = [];
   const randomValues = new Uint32Array(settings.length);
@@ -30,7 +30,7 @@ const createPassword = (settings: any): string => {
   return password.join("");
 };
 
-const checkRequirements = (requirements: any, password: string): boolean => {
+const checkRequirements = (requirements: Settings, password: string): boolean => {
   if (requirements.digit && ![...password].some((char) => numberChars.includes(char))) {
     return false;
   }
@@ -46,16 +46,12 @@ const checkRequirements = (requirements: any, password: string): boolean => {
   return true;
 };
 
-const GeneratePassword = (settings: any): string => {
-  console.log("generatePassword settings: ", settings);
+const GeneratePassword = (settings: Settings): string => {
 
   let password = createPassword(settings).toString();
-  console.log("Generated password 1:", password);
   while (!checkRequirements(settings, password)) {
     password = createPassword(settings).toString();
-    console.log("Generated password while:", password);
   }
-  console.log("Generated password ok:", password);
   return password;
 };
 
