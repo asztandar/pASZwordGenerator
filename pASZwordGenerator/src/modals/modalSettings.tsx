@@ -29,7 +29,7 @@ const ModalSettings = ({open, close}: IModalSettings) => {
             <FormControlLabel control={<Checkbox onChange={()=>{updateSettings({ upperCase: !settings.upperCase });}}  checked={settings.upperCase}/>} label="Wielkie litery" />
             <FormControlLabel control={<Checkbox onChange={()=>{updateSettings({ lowerCase: !settings.lowerCase });}} checked={settings.lowerCase}/>} label="Małe litery" />
             <FormControlLabel control={<Checkbox onChange={()=>{updateSettings({ digit: !settings.digit });}} checked={settings.digit}/>} label="Cyfry" />
-            <FormControlLabel control={<Checkbox onChange={()=>{updateSettings({ special: !settings.special });}} checked={settings.special}/>} label="Znaki specjalne" />
+            {/* <FormControlLabel control={<Checkbox onChange={()=>{updateSettings({ special: !settings.special });}} checked={settings.special}/>} label="Znaki specjalne" /> */}
             <Box>
                 <Slider defaultValue={8} min={4} max={32} value={settings.length} onChange={(e:any)=>{updateSettings({length: e.target.value});}} aria-label="Default" valueLabelDisplay="auto" />
                 <TextField label="Długość" value={settings.length} sx={{width: 'clamp(70px, 80px, 100px)'}}/>

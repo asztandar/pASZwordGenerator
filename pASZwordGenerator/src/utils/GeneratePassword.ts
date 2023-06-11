@@ -1,12 +1,11 @@
-import { Settings } from "./Context";
 
-const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-const specialChars = '!@#$%^&*()_+~`|}{[]\\:;?></-=';
-const numberChars = '0123456789';
+const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+const specialChars = "!@#$%^&*()_+~`|}{[]\\:;?></-=";
+const numberChars = "0123456789";
 
-const createPassword = (settings: Settings): string => {
-  let allChars = '';
+const createPassword = (settings: any): string => {
+  let allChars = "";
   if (settings.digit) {
     allChars += numberChars;
   }
@@ -28,27 +27,28 @@ const createPassword = (settings: Settings): string => {
     const randomIndex = randomValues[i] % allCharsLength;
     password.push(allChars[randomIndex]);
   }
-  return password.join('');
+  return password.join("");
 };
 
-const checkRequirements = (requirements: Settings, password: string): boolean => {
-  if (requirements.digit && ![...password].some(char => numberChars.includes(char))) {
+const checkRequirements = (requirements: any, password: string): boolean => {
+  if (requirements.digit && ![...password].some((char) => numberChars.includes(char))) {
     return false;
   }
-  if (requirements.lowerCase && ![...password].some(char => lowercaseChars.includes(char))) {
+  if (requirements.lowerCase && ![...password].some((char) => lowercaseChars.includes(char))) {
     return false;
   }
-  if (requirements.upperCase && ![...password].some(char => uppercaseChars.includes(char))) {
+  if (requirements.upperCase && ![...password].some((char) => uppercaseChars.includes(char))) {
     return false;
   }
-  if (requirements.special && ![...password].some(char => specialChars.includes(char))) {
+  if (requirements.special && ![...password].some((char) => specialChars.includes(char))) {
     return false;
   }
   return true;
 };
 
-const generatePassword = (settings: Settings): string => {
-    console.log("sett: ", settings)
+const GeneratePassword = (settings: any): string => {
+  console.log("generatePassword settings: ", settings);
+
   let password = createPassword(settings).toString();
   console.log("Generated password 1:", password);
   while (!checkRequirements(settings, password)) {
@@ -59,4 +59,4 @@ const generatePassword = (settings: Settings): string => {
   return password;
 };
 
-export default generatePassword;
+export default GeneratePassword;

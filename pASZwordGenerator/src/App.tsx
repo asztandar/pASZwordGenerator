@@ -14,18 +14,17 @@ import Button from '@mui/material/Button';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ModalSettings from './modals/modalSettings';
 import { SettingsContext, SettingsProvider } from './utils/Context';
-import GeneratePassword from './utils/GeneratePassword';
+import PasswordButton from './components/PasswordButton';
 
 
 function App() {
 
   const { settings } = useContext(SettingsContext);
 
-  useEffect(()=>{
-    console.log("setting1111: ", settings);
-  },[settings])
 
   const [openModalSettings, setOpenModalSettings] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+
 
   const handleClickSettings = () => {
     setOpenModalSettings(true);
@@ -51,10 +50,9 @@ function App() {
                   sx={{ '& .MuiOutlinedInput-root': { height: '100%' } }}
                   id="boxInputTextField"
                   placeholder="wygenerowane hasło"
+                  value={password}
                 />
-                <Button onClick={()=>{GeneratePassword(settings)}} id="boxInputButton" variant="contained">
-                  Generuj
-                </Button>
+                <PasswordButton setPassword={setPassword}/>
               </Box>
               <Box className="boxSettings">
                 <TextField
