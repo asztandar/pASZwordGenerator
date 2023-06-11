@@ -12,13 +12,15 @@ import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
 import * as React from 'react';
 import { SettingsContext } from './../utils/Context';
-import { ChangeEvent } from 'react';
 
 
 const ModalSettings = ({open, close}: IModalSettings) => {
 
   const { settings, updateSettings } = React.useContext(SettingsContext);
 
+  React.useEffect(()=>{
+    console.log("settin2g: ", settings);
+  },[settings])
 
   return (
       <Dialog open={open} onClose={()=>close(false)} PaperProps={{className:'modalSettingsDialog'}}>

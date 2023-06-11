@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useState } from 'react';
 
-type Settings = {
+export type Settings = {
   length: number;
   lowerCase: boolean;
   upperCase: boolean;

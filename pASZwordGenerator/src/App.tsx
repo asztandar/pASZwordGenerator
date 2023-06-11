@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Box from '@mui/material/Box';
@@ -13,9 +13,17 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ModalSettings from './modals/modalSettings';
-import { SettingsProvider } from './utils/Context';
+import { SettingsContext, SettingsProvider } from './utils/Context';
+import GeneratePassword from './utils/GeneratePassword';
+
 
 function App() {
+
+  const { settings } = useContext(SettingsContext);
+
+  useEffect(()=>{
+    console.log("setting1111: ", settings);
+  },[settings])
 
   const [openModalSettings, setOpenModalSettings] = useState<boolean>(false);
 
@@ -44,7 +52,7 @@ function App() {
                   id="boxInputTextField"
                   placeholder="wygenerowane hasło"
                 />
-                <Button id="boxInputButton" variant="contained">
+                <Button onClick={()=>{GeneratePassword(settings)}} id="boxInputButton" variant="contained">
                   Generuj
                 </Button>
               </Box>
